@@ -1,0 +1,104 @@
+.resultsByAuthors {
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.resultsByAuthors h2 {
+  margin: 10px;
+}
+
+.authorContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.authorData {
+  width: 80%;
+}
+
+.authorDataText {
+  padding: 20px;
+}
+
+.authorInfo {
+  padding: 10px;
+  width: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  .authorData {
+    width: 60%;
+  }
+
+  .authorInfo {
+    width: 40%;
+  }
+}
+
+.resultsFound {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.authorDataText p:first-child {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.addToBookList {
+  cursor: pointer;
+  background-color: #8d9eff;
+  border-radius: 10px;
+  padding: 5px;
+  height: 30px;
+}
+
+.work {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+.workInfo img {
+  width: 100px;
+}
+.workInfo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bookTitleAuthor {
+  padding: 10px;
+}
+
+.bookTitleAuthor p:first-child {
+  font-size: 17px;
+}
+
+.alternativeNames {
+  padding: 10px;
+}
+
+.alternativeNames li {
+  font-size: 13px;
+}
+
+.authorImageContainer {
+  width: 100%;
+}
+
+.authorImageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+}

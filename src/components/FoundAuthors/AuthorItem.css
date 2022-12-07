@@ -1,0 +1,27 @@
+.authorItem {
+  padding: 20px;
+  background-color: #eee;
+  margin: 10px;
+}
+
+.authorItem .authorName {
+  font-size: 20px;
+  color: blue;
+}
+
+.authorItem .numberOfBooks {
+  font-weight: bold;
+}
+
+.authorInfoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.authorInfo {
+  padding: 10px;
+}
+/* 
+.authorImage {
+  width: 130px;
+} */

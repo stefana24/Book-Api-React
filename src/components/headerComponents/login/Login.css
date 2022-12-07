@@ -1,0 +1,46 @@
+.formContainer {
+  padding: 10px;
+  margin-top: 20px;
+  background-color: white;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .formContainer {
+    width: 100vw;
+  }
+}
+
+.formAuthentication {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginMessage {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.submitBtn {
+  background-color: #d58bdd;
+}
+
+.invalid {
+  color: red;
+  background-color: red;
+}
+
+.loginSubmitBtn {
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: blueviolet;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .loginSubmitBtn {
+    width: 100%;
+  }
+}

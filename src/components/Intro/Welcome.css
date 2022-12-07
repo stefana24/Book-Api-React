@@ -1,0 +1,31 @@
+.welcomeText {
+  text-align: center;
+  margin: 20px;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+}
+
+.welcomeImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.welcomeImage img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.welcomeUser {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.signOutBtn {
+  background-color: black;
+  color: white;
+  padding: 3px;
+  margin: 10px;
+}

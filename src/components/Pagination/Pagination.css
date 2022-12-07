@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .paginationBtn {
+  background-color: transparent;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+.activeBtn {
+  padding: 3px;
+  margin-right: 5px;
+  background-color: #8d9eff;
+}
