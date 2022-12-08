@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../services/firebase";
 import { useNavigate } from "react-router-dom";
+import styles from "./Signup.module.css";
+import registerImage from "../../../images/typing.jpg";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,9 +27,12 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="formContainer">
-        <form className="formAuthentication" onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <div className={styles.imageContainer}>
+        <img src={registerImage}></img>
+      </div>
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSubmit}>
           <label>Your email address</label>
           <input
             type="text"
@@ -54,10 +59,12 @@ const Signup = () => {
             value={passwordConfirm}
             onChange={(ev) => setPasswordConfirm(ev.target.value)}
           />
-          <button type="submit">Sign up</button>
+          <button type="submit" className={styles.submitBtn}>
+            Sign up
+          </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  /* background-color: #ccc; */
+}
+
+.imageContainer {
+  width: 40%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.imageContainer img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.formContainer {
+  width: 60%;
+  margin-top: 10px;
+}
+
+.formContent {
+  margin: 0 auto;
+  width: 80%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: 0 0 25px rgb(0 0 0 / 35%); */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.inputField {
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  width: 100%;
+  transition: all 0.3s linear;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.loginMessage {
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.loginSubmitBtn {
+  background-color: black;
+  color: white;
+  padding: 3px;
+}
+
+.divRegister {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divRegister button {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+/* @media (max-width: 600px) {
+  .formContainer {
+    width: 100vw;
+  }
+}
+
+.formAuthentication {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitBtn {
+  background-color: #d58bdd;
+}
+
+.invalid {
+  color: red;
+  background-color: red;
+}
+
+.loginSubmitBtn {
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: blueviolet;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .loginSubmitBtn {
+    width: 100%;
+  }
+} */

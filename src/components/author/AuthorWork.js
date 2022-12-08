@@ -4,8 +4,11 @@ import fetchData from "../utils/fetchData";
 import Pagination from "../Pagination/Pagination";
 import styles from "./AuthorWork.module.css";
 import BookContext from "../context/books/BookContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../services/firebase";
 
 const AuthorInfo = () => {
+  const [user, loading, error] = useAuthState(auth);
   const booksCtx = useContext(BookContext);
   const [entries, setEntries] = useState([]);
   const [size, setSize] = useState(0);
@@ -79,13 +82,17 @@ const AuthorInfo = () => {
 
   const addBookHandler = ({ id, title, name, first_publish_date, covers }) => {
     const book = { id, title, name, first_publish_date, covers };
-    const found = storageArr.find((item) => item.id === book.id);
-    if (!found) {
-      alert("Book added");
-      storageArr.push(book);
-      localStorage.setItem("myBooks", JSON.stringify(storageArr));
+    if (user) {
+      const found = storageArr.find((item) => item.id === book.id);
+      if (!found) {
+        alert("Book added");
+        storageArr.push(book);
+        localStorage.setItem("myBooks", JSON.stringify(storageArr));
+      } else {
+        alert("Book already added!!!!!");
+      }
     } else {
-      alert("Book already added!!!!!");
+      alert("Login to add book");
     }
   };
 

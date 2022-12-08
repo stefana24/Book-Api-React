@@ -18,14 +18,12 @@ const Search = (props) => {
     <div className="searchComponent">
       <form onSubmit={handleSubmit}>
         <input
+          className="inputField"
           type="text"
-          placeholder="search"
+          placeholder="search by author"
           value={inputValue}
           onChange={(ev) => setInputValue(ev.target.value)}
         />
-        <button type="submit" className="submitBtn">
-          Submit
-        </button>
       </form>
     </div>
   );
