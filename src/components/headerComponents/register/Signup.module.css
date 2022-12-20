@@ -44,3 +44,17 @@
   color: white;
   height: 30px;
 }
+
+.signIn {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.signIn button {
+  margin-left: 1rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}

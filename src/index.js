@@ -8,11 +8,11 @@ import Signup from "./components/headerComponents/register/Signup";
 import AuthorInfo from "./components/author/AuthorWork";
 import MyBooks from "./components/headerComponents/myBooks/MyBooks";
 import BookProvider from "./components/context/books/BookProvider";
-import { LoginProvider } from "./components/context/login/LoginContextProvider";
 import FetchByAuthor from "./components/FoundAuthors/FetchByAuthor";
+import UserProvider from "./components/context/user/UserProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <LoginProvider>
+  <UserProvider>
     <BookProvider>
       <BrowserRouter>
         <Routes>
@@ -26,5 +26,5 @@ root.render(
         </Routes>
       </BrowserRouter>
     </BookProvider>
-  </LoginProvider>
+  </UserProvider>
 );

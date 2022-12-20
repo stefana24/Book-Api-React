@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 const Header = (props) => {
   const { getAuthorName } = props;
   const authorSearch = (inputValue) => {
-    console.log(inputValue);
     getAuthorName(inputValue);
   };
   const [user, loading, error] = useAuthState(auth);
@@ -17,7 +16,6 @@ const Header = (props) => {
   const [showLogin, setShowLogin] = useState(true);
   const [showSignup, setShowSignup] = useState(true);
   useEffect(() => {
-    console.log(location);
     if (location.pathname === "/login") {
       setShowLogin(false);
       return;
@@ -37,22 +35,54 @@ const Header = (props) => {
           <h2>Open Library</h2>
           <div className={styles.outline}></div>
         </Link>
-        <Search authorSearch={authorSearch} />
-        <Link to="/myBooks">
-          <button className={styles.myBooksBtn}>My books</button>
-        </Link>
+        <div>
+          <input
+            id="menu-toggle"
+            className={styles.inputBurg}
+            type="checkbox"
+          ></input>
+          <label
+            className={styles["menu-button-container"]}
+            htmlFor="menu-toggle"
+          >
+            <div className={styles["menu-button"]}></div>
+          </label>
 
-        <div className={"authentication"}>
-          {!user && showLogin && (
-            <Link to="/login" className={styles.linkStyle}>
-              Login
-            </Link>
-          )}
-          {!user && showSignup && (
-            <Link to="/signup" className={styles.linkStyle}>
-              Signup
-            </Link>
-          )}
+          <ul className={styles.menu}>
+            <li>
+              <Search authorSearch={authorSearch} />
+            </li>
+            <li>
+              <Link to="/myBooks">
+                <button className={styles.myBooksBtn}>My books</button>
+              </Link>
+            </li>
+
+            <li>
+              {!user && showLogin && (
+                <Link to="/login" className={styles.linkStyle}>
+                  Login
+                </Link>
+              )}
+            </li>
+            <li>
+              {!user && showSignup && (
+                <Link to="/signup" className={styles.linkStyle}>
+                  Signup
+                </Link>
+              )}
+            </li>
+            <li>
+              {user && (
+                <button
+                  className={styles.signOutBtn}
+                  onClick={() => auth.signOut()}
+                >
+                  Sign out
+                </button>
+              )}
+            </li>
+          </ul>
         </div>
       </div>
     </div>

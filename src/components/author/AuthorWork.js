@@ -6,7 +6,8 @@ import styles from "./AuthorWork.module.css";
 import BookContext from "../context/books/BookContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../services/firebase";
-
+import { db } from "../../services/firebase";
+import { collection, addDoc, doc, updateDoc, setDoc } from "firebase/firestore";
 const AuthorInfo = () => {
   const [user, loading, error] = useAuthState(auth);
   const booksCtx = useContext(BookContext);
@@ -22,6 +23,8 @@ const AuthorInfo = () => {
   const location = useLocation();
 
   const [isReady, setIsReady] = useState(false);
+
+  const [booksId, setBooksId] = useState([]);
 
   const imgSrc = `https://covers.openlibrary.org/a/olid/${id}-M.jpg`;
   useEffect(() => {
@@ -80,23 +83,52 @@ const AuthorInfo = () => {
   const currentRecords = entries.slice(indexOfFirstRecord, indexOfLastRecord);
   const nPages = Math.ceil(entries.length / worksPerPage);
 
-  const addBookHandler = ({ id, title, name, first_publish_date, covers }) => {
-    const book = { id, title, name, first_publish_date, covers };
+  const addBookHandler = async ({
+    title,
+    name,
+    first_publish_date,
+    covers,
+  }) => {
+    const book = { title, name, first_publish_date, covers };
     if (user) {
-      const found = storageArr.find((item) => item.id === book.id);
-      if (!found) {
-        alert("Book added");
-        storageArr.push(book);
-        localStorage.setItem("myBooks", JSON.stringify(storageArr));
+      booksCtx.addBook(book);
+      // const found = storageArr.find((item) => item.id === book.id);
+      // if (!found) {
+      //   alert("Book added");
+      //   storageArr.push(book);
+      //   localStorage.setItem("myBooks", JSON.stringify(storageArr));
+      // } else {
+      //   alert("Book already added!!!!!");
+      // }
+        try {
+          const docRef = await addDoc(collection(db, "books"), {
+            title,
+            name,
+            first_publish_date: "",
+            covers,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
       } else {
-        alert("Book already added!!!!!");
+        alert("Login to add book");
       }
-    } else {
-      alert("Login to add book");
-    }
+      // const docRef = await addDoc(collection(db, "books"), {
+      //   title,
+      //   name,
+      //   first_publish_date: "",
+      //   covers,
+      // });
+      // const currentUser = auth.currentUser.uid;
+      // setBooksId([...booksId], docRef.id);
+      // console.log(booksId);
+      // const userRef = doc(db, "users", currentUser);
+      // setDoc(userRef, { favorites: booksId }, { merge: true });
+   // }
   };
 
-  const storageArr = JSON.parse(localStorage.getItem("myBooks")) || [];
+  // const storageArr = JSON.parse(localStorage.getItem("myBooks")) || [];
 
   return (
     <>
@@ -115,7 +147,7 @@ const AuthorInfo = () => {
             {size && <p className={styles.resultsFound}>{size} works</p>}
             {currentRecords.map((item) => {
               console.log(item);
-              const { title, key, first_publish_date = "", covers = [] } = item;
+              const { title, first_publish_date = "", covers = [] } = item;
               const imgSrc = `https://covers.openlibrary.org/b/id/${covers[0]}-M.jpg`;
               return (
                 <div className={styles.work}>
@@ -133,7 +165,6 @@ const AuthorInfo = () => {
                     className={styles.addToBookList}
                     onClick={() => {
                       addBookHandler({
-                        id,
                         title,
                         name,
                         first_publish_date,

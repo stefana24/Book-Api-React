@@ -15,11 +15,10 @@ function App() {
   const location = useLocation();
   const [showWelcome, setShowWelcome] = useState(true);
   useEffect(() => {
-    console.log(location);
     if (location.pathname !== "/") {
       setShowWelcome(false);
-    }else{
-       setShowWelcome(true);
+    } else {
+      setShowWelcome(true);
     }
   }, [location]);
   return (

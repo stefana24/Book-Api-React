@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import auth from "../../../services/firebase";
+import auth, { db } from "../../../services/firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import registerImage from "../../../images/typing.jpg";
+import UserContext from "../../context/user/userContext";
+import { collection, getDocs, doc, getDoc, setDoc } from "firebase/firestore";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,9 +13,16 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState("");
+
   function register() {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((auth) => navigate("/login"))
+      .then((auth) => {
+        setDoc(doc(db, "users", auth.user.uid), {
+          screenName: username,
+        });
+      })
+      .then(() => navigate("/login"))
       .catch((err) => console.error(err));
   }
 
@@ -44,7 +53,11 @@ const Signup = () => {
             Choose a screen name. Screen names are public and cannot be changed
             later
           </label>
-          <input type="text" placeholder="enter screen name" />
+          <input
+            type="text"
+            placeholder="enter screen name"
+            onChange={(ev) => setUsername(ev.target.value)}
+          />
           <label>Choose a password</label>
           <input
             type="password"
@@ -62,6 +75,10 @@ const Signup = () => {
           <button type="submit" className={styles.submitBtn}>
             Sign up
           </button>
+          <div className={styles.signIn}>
+            <p>Already have an account?</p>
+            <button onClick={() => navigate("/login")}>Sign in</button>
+          </div>
         </form>
       </div>
     </div>

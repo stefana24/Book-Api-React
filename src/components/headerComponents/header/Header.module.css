@@ -1,27 +1,24 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 .header {
   box-shadow: 0 0 25px rgb(0 0 0 / 35%);
+  width: 100vw;
+  height: 8rem;
 }
 
 .headerContainer {
-  width: 70%;
-  margin: 0 auto;
-  padding: 10px;
+  padding: 1rem;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-}
-
-@media (max-width: 600px) {
-  .headerContainer {
-    width: 100%;
-  }
 }
 
 .linkStyle {
@@ -46,4 +43,86 @@
   border: 1px solid transparent;
   cursor: pointer;
   font-family: "Dancing Script", cursive;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.menu > li {
+  margin: 0 1rem;
+}
+
+.signOutBtn {
+  background-color: black;
+  color: white;
+}
+
+.menu-button-container {
+  display: none;
+  cursor: pointer;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.inputBurg {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .inputBurg {
+    display: block;
+    visibility: hidden;
+  }
+  .menu-button-container {
+    display: flex;
+    height: 30px;
+    width: 50px;
+    cursor: pointer;
+    border: none;
+    margin-right: 1rem;
+    background: linear-gradient(
+      to bottom,
+      #3d0e61,
+      #3d0e61 20%,
+      white 20%,
+      white 40%,
+      #3d0e61 40%,
+      #3d0e61 60%,
+      white 60%,
+      white 80%,
+      #3d0e61 80%,
+      #3d0e61 100%
+    );
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 100px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu li {
+    display: none;
+  }
+
+  .inputBurg:checked ~ .menu li {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #ccc;
+  }
 }
